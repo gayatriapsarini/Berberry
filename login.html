@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <!-- Cool Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap" rel="stylesheet">
+
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <!-- Our stylesheet -->
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+</head>
+<body>
+    <div id="content_container">
+        <div id="form_container">
+            <div id="form_header_container">
+                <h2 id="form_header"> Login Form </h2>
+            </div>
+
+            <!-- <div id="form_content_container">
+                <div id="form_content_inner_container">
+                    <input type="text" id="full_name" placeholder="Username">
+                    <input type="email" id="email" placeholder="Email">
+                    <input type="password" id="password" placeholder="New Password">
+
+                    <div id="button_container">
+                        <button><a href="login.html">Login</a></button>
+
+                        <button type="button" class="btn btn-warning" id="register" name="register">Register</button>
+                    </div>
+
+                </div>
+            </div> -->
+
+            <main>
+                <form>
+                      <div class="container">
+                        <div id="form_content_container">
+                            <div id="form_content_inner_container">
+                            
+                            <label class="form-label" for="email"><b>Email</b></label>
+                            <input class="form-control" type="text" placeholder="Email" name="email" id="email" required>
+          
+                            <label class="form-label"><b>Password</b></label>
+                            <input class="form-control" type="password" placeholder="Password" name="psw" id="psw" required>
+          
+                            
+                                
+                            <button type="button" id="submitData" name="submitData" class="registerbtn btn btn-danger">Login</button>
+                            <button class="btn btn-primary"><a href="index.html" style="text-decoration: none; color:white">Register</a></button>
+                      </div>
+                      </div>
+                        </div>
+          
+          
+          
+                </form>
+          </main>
+
+          
+        </div>
+    </div>
+
+    <!-- -----------------------SCRIPT BOOTSRAP AND POPPER---------------------- -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+    integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+    integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous">
+</script>
+
+<!-- -----------------------SCRIPT BOOTSRAP AND POPPER---------------------- -->
+
+
+<!-- --------------------------------ICON IONS------------------------------ -->
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+<!-- --------------------------------ICON IONS------------------------------ -->
+
+
+<!-- -------------------------------FIREBASE------------------------------- -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.5/firebase-app.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.5/firebase-database.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.5/firebase-firestore.min.js"></script>
+
+<!-- -------------------------------FIREBASE------------------------------- -->
+
+
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+import {initializeApp} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut
+} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+import {getDatabase, set, ref, update} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
+
+
+// -----------------------------CONFIGURATION-----------------------------//
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBN2eDokFN6CkZnKTABGMfyJSdxAuGLBVU",
+  authDomain: "project-android-ed396.firebaseapp.com",
+  databaseURL: "https://project-android-ed396-default-rtdb.firebaseio.com",
+  projectId: "project-android-ed396",
+  storageBucket: "project-android-ed396.appspot.com",
+  messagingSenderId: "790400793981",
+  appId: "1:790400793981:web:78cfb4cf5f4b5ff080a014",
+  measurementId: "G-Z60VGM7P0D"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth();
+const database = getDatabase(app);
+
+
+// -----------------------------CONFIGURATION-----------------------------//
+
+//fungsi biar ngecek apakah keload ato gak pas buka webnya
+window.onload = function () {
+    //ngasih tau di console loge
+    console.log('window - onload');
+
+    // Initialize variables
+
+    //kita panggil onAuthStateChanged dari firebase auth
+    auth.onAuthStateChanged(function(user) { //parameter functionnya si user
+      //kalo user, login maka masuk ke if ini
+        if (user) { 
+        alert("You already logged in!")
+        location.href = "/home.html";
+      }
+    });
+};
+
+// ---------------------------BUTTON PROCESS----------------------------//
+      
+submitData.addEventListener('click', (e) => {
+        
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('psw').value;
+
+        e.preventDefault();
+
+          // log in user
+              signInWithEmailAndPassword(auth, email, password, status)
+              .then((userCredential) => {
+
+                    const user = userCredential.user;
+
+                    var lgDate = new Date();
+                    update(ref(database, 'users/' + user.uid + "INI ADMIN"), {
+                    last_login: lgDate, email, password, status:"Admin"
+                    })
+
+                    .then(() => {
+                          alert("Selamat Datang")
+                          location.href = "home.html";
+                          
+                    })
+              })
+
+              .catch((error) => {
+                    alert("Pastikan Form Terisi dan Benar");
+              });
+        
+  });
+
+  // ---------------------------BUTTON PROCESS----------------------------//
+
+</script>
+
+</body>
+</html>

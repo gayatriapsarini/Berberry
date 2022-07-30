@@ -1,0 +1,31 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+main {
+    width: 100vw;
+    height:100vh;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #d4e4eb;
+    color: #475979;
+}
+
+form {
+    width: 400px;
+    border: solid 1px #EBEBEB;
+    padding: 5rem;
+    color: #475979;
+}
+
+label{
+    color: #475979;
+    font-size: 15px;
+}
+
+button {
+    margin-top: 2rem;
+}
